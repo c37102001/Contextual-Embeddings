@@ -18,7 +18,7 @@ from common.vocab import Vocab
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('dataset_dir', type=Path, help='Target dataset directory')
+    parser.add_argument('dataset_dir', type=Path, help='Target dataset directory')  # dataset/classification
     args = parser.parse_args()
 
     return vars(args)
