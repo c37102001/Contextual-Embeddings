@@ -1,2 +1,4 @@
 data/data/GloVe/glove.840B.300d.txt
 data/data/language_model/corpus.txt
+data/GloVe/glove.840B.300d.txt
+data/language_model/corpus.txt
