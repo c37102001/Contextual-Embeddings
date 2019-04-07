@@ -38,6 +38,7 @@ class Embedder:
             ``(len(sentences), min(max(len, sentences), max_sent_len), self.ctx_emb_dim)``
             and dtype must be ``np.float32``.
         """
+
         # TODO
         return np.empty(
-            (len(sentences), min(max(len, sentences), max_sent_len), 0), dtype=np.int64)
+            (len(sentences), min(max(map(len, sentences)), max_sent_len), 0), dtype=np.int64)

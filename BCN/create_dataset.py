@@ -29,12 +29,14 @@ def load_data(mode, data_path, nlp):
     with data_path.open() as f:
         reader = csv.DictReader(f)
         data = [r for r in reader]
+        # r = data[0] format: OrderedDict([('Id', '10001'), ('text', "The Rock is...."), ('label', '4')])
 
     for d in tqdm(data, desc='[*] Tokenizing', dynamic_ncols=True):
         text = re.sub('-+', ' ', d['text'])
         text = re.sub('\s+', ' ', text)
-        doc = nlp(text)
-        d['text'] = [token.text for token in doc]
+        doc = nlp(text)  # text = doc = 'The Rock is destined to be the 21st ....'
+        d['text'] = [token.text for token in doc]  # = ['The', 'Rock', 'is']
+        # r = data[0] format: OrderedDict([('Id', '10001'), ('text', ['The', 'Rock', 'is']), ('label', '4')])
     print('[-] {} data loaded\n'.format(mode.capitalize()))
 
     return data
@@ -43,12 +45,14 @@ def load_data(mode, data_path, nlp):
 def create_vocab(data, cfg, dataset_dir):
     print('[*] Creating word vocab')
     words = Counter()
-    for m, d in data.items():
+    for m, d in data.items():    # m:'train'
         bar = tqdm(
             d, desc='[*] Collecting word tokens form {} data'.format(m),
             dynamic_ncols=True)
         for dd in bar:
+            # dd:OrderedDict([('Id', '10001'), ('text', ['The', 'Rock', 'is', ...]), ('label', '4')])
             words.update([w.lower() for w in dd['text']])
+            # words: Counter({'the': 2, 'to': 2, "'s": 2, '`': 2, 'rock': 1, 'is': 1, '.': 1})
         bar.close()
     tokens = [w for w, _ in words.most_common(cfg.word.size)]
     word_vocab = Vocab(tokens, **cfg.word)
@@ -59,6 +63,7 @@ def create_vocab(data, cfg, dataset_dir):
 
     print('[*] Creating char vocab')
     char_vocab = Vocab(list(string.printable), **cfg.char)
+    # ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', ...]
     char_vocab_path = (dataset_dir / 'char.pkl')
     with char_vocab_path.open(mode='wb') as f:
         pickle.dump(char_vocab, f)
@@ -94,8 +99,10 @@ def main(dataset_dir):
     nlp.disable_pipes(*nlp.pipe_names)
 
     data_dir = Path(cfg.data_dir)
-    data = {m: load_data(m, data_dir / '{}.csv'.format(m), nlp)
-            for m in ['train', 'dev', 'test']}
+    data = {m: load_data(m, data_dir / '{}.csv'.format(m), nlp) for m in ['train', 'dev', 'test']}
+    # len(data)=3
+    # data['train'][0]=OrderedDict([('Id', '10001'), ('text', ['The', 'Rock', 'is', 'destined']), ('label', '4')])
+
     word_vocab, char_vocab = create_vocab(data, cfg.vocab, dataset_dir)
     create_dataset(data, word_vocab, char_vocab, dataset_dir)
 

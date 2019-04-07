@@ -2,3 +2,8 @@ data/data/GloVe/glove.840B.300d.txt
 data/data/language_model/corpus.txt
 data/GloVe/glove.840B.300d.txt
 data/language_model/corpus.txt
+dataset/classification/word.pkl
+dataset/classification/train.pkl
+dataset/classification/dev.pkl
+dataset/classification/char.pkl
+dataset/classification/test.pkl
