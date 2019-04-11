@@ -1,0 +1,19 @@
+random_seed: 19
+device:
+  type: cpu
+  ordinal: 0
+dataset_dir: './ELMo/elmo_data'
+data_loader:
+  batch_size: 32
+net:
+  d_model: 128
+  dropout: 0.1
+optim:
+  algo: 'Adam'
+  kwargs:
+    lr: 1.0e-3
+    weight_decay: 1.0e-6
+train:
+  n_epochs: 10
+  max_grad_norm: 1
+  n_gradient_accumulation_steps: 1  # Must be a divider of data_loader.batch_size.

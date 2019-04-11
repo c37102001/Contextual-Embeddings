@@ -1,4 +1,4 @@
 {
-  "corpus_path": "../data/language_model/corpus_tokenized.txt",
-  "embedding_vec_path": "../data/GloVe/glove.840B.300d.txt"
+  "corpus_path": "./data/language_model/corpus_tokenized.txt",
+  "embedding_vec_path": "./data/GloVe/glove.840B.300d.txt"
 }

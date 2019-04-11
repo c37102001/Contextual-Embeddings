@@ -7,9 +7,8 @@ class CorpusDataset(Dataset):
     Args:
         data (list): List of samples(dict) with `context` and `labels` as index.
     """
-    def __init__(self, data, padding=0, padded_len=300, shuffle=True):
+    def __init__(self, data, padding=0, shuffle=True):
         self.data = data
-        self.padded_len = padded_len
         self.padding = padding
         self.shuffle = shuffle
 
@@ -18,16 +17,12 @@ class CorpusDataset(Dataset):
 
     def __getitem__(self, index):
         data = dict(self.data[index])
-        if len(data['context']) > self.padded_len:
-            data['context'] = data['contexts'][:self.padded_len]
-        if len(data['labels']) > self.padded_len:
-            data['labels'] = data['labels'][:self.padded_len]
         return data
 
     def collate_fn(self, datas):
 
         batch = dict()
-        padded_len = min(self.padded_len, max([len(data['context']) for data in datas]))
+        padded_len = max([len(data['context']) for data in datas])
 
         batch['context'] = torch.tensor(
             [pad_to_len(data['context'], padded_len, self.padding)

@@ -1,6 +1,7 @@
 import torch.nn.functional as F
-
+import torch
 from .metrics import Metric
+import ipdb
 
 
 class Loss(Metric):
@@ -44,8 +45,11 @@ class CrossEntropyLoss(Loss):
         self.name = 'CrossEntropy({})'.format(self._target_key)
 
     def _calculate_loss(self, output, batch):
-        _input = output[self._input_key]
-        target = batch[self._target_key].to(device=self._device)
+        _input = output[self._input_key]   # [32, 446, 45899])
+        target = batch[self._target_key].to(device=self._device)    # [32, 446] should be (32, 45899)
+
+        ipdb.set_trace()
+
         loss = F.cross_entropy(
             _input, target, weight=self._weight, ignore_index=self._ignore_index,
             reduction=self._reduction)

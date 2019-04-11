@@ -113,19 +113,19 @@ class BaseTrainer:
     def _run_batch(self, batch):
         raise NotImplementedError
 
-    def _calculate_losses(self, mode, batch, output):
+    def _calculate_losses(self, mode, output, batch):
         total_loss = 0
         for loss in self._losses:
-            total_loss += loss.update(batch, output)
+            total_loss += loss.update(output, batch)
             self._stat[mode][loss.name] = loss.value
         if len(self._losses) > 1:
             self._stat[mode]['total_loss'] = total_loss.item()
 
         return total_loss
 
-    def _calculate_metrics(self, mode, batch, output):
+    def _calculate_metrics(self, mode, output, batch):
         for metric in self._metrics:
-            metric.update(batch, output)
+            metric.update(output, batch)
             self._stat[mode][metric.name] = metric.value
 
     def _save_ckpt(self):
