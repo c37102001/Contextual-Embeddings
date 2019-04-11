@@ -1,5 +1,5 @@
-this is a dog.
-this is a dog1.
-this is a dog2.
-this is a dog3.
-this is a dog4.
+this is a dog .
+this is a dog1 .
+these are two dog2 .
+these are two dog3 .
+this is a dog4 .
