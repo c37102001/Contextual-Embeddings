@@ -8,3 +8,6 @@ dataset/classification/dev.pkl
 dataset/classification/char.pkl
 dataset/classification/test.pkl
 data/language_model/corpus_tokenized.txt
+ELMo/elmo_data/embedding.pkl
+ELMo/elmo_data/train.pkl
+ELMo/elmo_data/valid.pkl

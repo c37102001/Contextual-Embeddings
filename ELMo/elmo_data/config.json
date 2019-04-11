@@ -1,5 +1,4 @@
 {
   "corpus_path": "../data/language_model/corpus_tokenized.txt",
-  "test_corpus_path": "../data/language_model/adog.txt",
   "embedding_vec_path": "../data/GloVe/glove.840B.300d.txt"
 }

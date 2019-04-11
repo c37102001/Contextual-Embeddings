@@ -4,7 +4,9 @@ import argparse
 import logging
 import json
 import os
-from tqdm import tqdm
+import pickle
+from embedding import Embedding
+from preprocessor import Preprocessor
 
 
 def parse_args():
@@ -14,29 +16,34 @@ def parse_args():
     return args
 
 
-def collect_words(corpus_dir):
-    words = set()
-    with open(corpus_dir) as f:
-        bar = tqdm(f, desc='[*] Collecting words from {}'.format(corpus_dir), dynamic_ncols=True)
-        for l in bar:
-            words |= {*map(lambda x: x.lower(), l.split())}
-        bar.close()
-    return words
-
-
 def main(args):
     config_path = os.path.join(args.dest_dir, 'config.json')
-    logging.info('loading configuration from {}'.format(config_path))
+    embedding_pkl_path = os.path.join(args.dest_dir, 'embedding.pkl')
+    train_pkl_path = os.path.join(args.dest_dir, 'train.pkl')
+    valid_pkl_path = os.path.join(args.dest_dir, 'valid.pkl')
+
     with open(config_path) as f:
         config = json.load(f)
-    corpus_dir = config['test_corpus_path']
 
-    words = list(collect_words(corpus_dir))
-    word_to_index = {w: i for i, w in enumerate(words)}
+    preprocessor = Preprocessor(None)
 
-    ipdb.set_trace()
+    # process embedding
+    words = preprocessor.collect_words(config['corpus_path'])
+    logging.info('loading embedding.')
+    embedding = Embedding(config['embedding_vec_path'], words)
+    preprocessor.embedding = embedding
+    logging.info('Saving embedding.')
+    with open(embedding_pkl_path, 'wb') as f:
+        pickle.dump(embedding, f)
 
-
+    # process corpus into dataset
+    logging.info('Processing dataset.')
+    train_dataset, valid_dataset = preprocessor.get_dataset(config['corpus_path'])
+    logging.info('Saving dataset.')
+    with open(train_pkl_path, 'wb') as f:
+        pickle.dump(train_dataset, f)
+    with open(valid_pkl_path, 'wb') as f:
+        pickle.dump(valid_dataset, f)
 
 
 if __name__ == '__main__':
