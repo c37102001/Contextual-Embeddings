@@ -7,3 +7,4 @@ dataset/classification/train.pkl
 dataset/classification/dev.pkl
 dataset/classification/char.pkl
 dataset/classification/test.pkl
+data/language_model/corpus_tokenized.txt

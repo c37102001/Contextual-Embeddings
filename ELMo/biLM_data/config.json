@@ -1,0 +1,4 @@
+{
+  "corpus_path": "../data/language_model/corpus.txt",
+  "embedding_vec_path": "../data/GloVe/glove.840B.300d.txt"
+}

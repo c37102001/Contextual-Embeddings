@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c77ee79-b021-4c80-8e56-46ad87c3cf42" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ELMo/biLM_data/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ELMo/embedding.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ELMo/make_biLM_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ELMo/preprocessor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/language_model/adog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HW2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HW2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BCN/create_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/BCN/create_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BCN/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/BCN/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ELMo/embedder.py" beforeDir="false" afterPath="$PROJECT_DIR$/ELMo/embedder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/vocab.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/vocab.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,41 +19,53 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/HW2$biLM.coverage" NAME="biLM Coverage Results" MODIFIED="1554794169866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ELMo" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1147958258">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csv" value="10" />
+          <entry key="csv" value="14" />
+          <entry key="json" value="1" />
           <entry key="md" value="2" />
-          <entry key="py" value="46" />
-          <entry key="txt" value="6" />
-          <entry key="yaml" value="16" />
+          <entry key="py" value="60" />
+          <entry key="txt" value="12" />
+          <entry key="yaml" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="JSON" value="1" />
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Python" value="46" />
-          <entry key="YAML" value="16" />
+          <entry key="PLAIN_TEXT" value="26" />
+          <entry key="Python" value="60" />
+          <entry key="YAML" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="995" />
+          <entry key="dummy" value="16" />
+          <entry key="json" value="104" />
+          <entry key="py" value="3575" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="995" />
+          <entry key="JSON" value="104" />
+          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="Python" value="3575" />
         </counts>
       </usages-collector>
     </session>
@@ -57,36 +73,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BCN/train.py">
+        <entry file="file://$PROJECT_DIR$/BCN/dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="130" column="29" lean-forward="true" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+            <state relative-caret-position="666">
+              <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ELMo/embedder.py">
+        <entry file="file://$PROJECT_DIR$/common/vocab.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/simple_model/config.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            <state relative-caret-position="126">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -96,6 +110,9 @@
       <find>string</find>
       <find>set_tr</find>
       <find>set</find>
+      <find>e</find>
+      <find>a</find>
+      <find>s</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,10 +121,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BCN/create_dataset.py" />
-        <option value="$PROJECT_DIR$/common/vocab.py" />
         <option value="$PROJECT_DIR$/BCN/train.py" />
         <option value="$PROJECT_DIR$/ELMo/embedder.py" />
+        <option value="$PROJECT_DIR$/data/language_model/adog.txt" />
+        <option value="$PROJECT_DIR$/ELMo/Embedding.py" />
+        <option value="$PROJECT_DIR$/ELMo/embedding.py" />
+        <option value="$PROJECT_DIR$/ELMo/biLM.py" />
+        <option value="$PROJECT_DIR$/ELMo/biLM_data/config.json" />
+        <option value="$PROJECT_DIR$/ELMo/preprocessor.py" />
+        <option value="$PROJECT_DIR$/ELMo/make_biLM_dataset.py" />
+        <option value="$PROJECT_DIR$/BCN/create_dataset.py" />
+        <option value="$USER_HOME$/Downloads/HW2/common/vocab.py" />
+        <option value="$PROJECT_DIR$/common/vocab.py" />
       </list>
     </option>
   </component>
@@ -123,12 +148,14 @@
     <option name="width" value="1890" />
     <option name="height" value="936" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -149,42 +176,33 @@
             <path>
               <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
               <item name="HW2" type="462c0819:PsiDirectoryNode" />
-              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
               <item name="HW2" type="462c0819:PsiDirectoryNode" />
-              <item name="dataset" type="462c0819:PsiDirectoryNode" />
-              <item name="classification" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
-              <item name="ELMo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="simple_model" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="language_model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="plugin&#9;ACTION&#9;WelcomeScreen.Plugins" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../adl-hw1-example-code" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\c3710\PycharmProjects\ADL\HW2\data\language_model" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -197,6 +215,35 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="biLM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="HW2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ELMo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\c3710\PycharmProjects\ADL\HW2\ELMo\make_biLM_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.biLM" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -213,15 +260,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15036379" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16734034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" x="0" y="23" width="1281" height="658" id="File Transfer" order="0" type="WINDOWED" weight="0.3291815" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3291815" />
-      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.3291815" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -230,7 +276,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="0" y="23" width="1281" height="658" id="Terminal" order="12" type="WINDOWED" visible="true" weight="0.3291815" />
+      <window_info anchor="bottom" x="0" y="23" width="1281" height="658" id="Terminal" order="12" type="WINDOWED" weight="0.3291815" />
       <window_info anchor="bottom" id="Python Console" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -243,37 +289,18 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BCN/predict.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/classification/test.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/classification/sample_submission.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/classification/dev.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/language_model/corpus.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/GloVe/glove.840B.300d.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/bcn_classification_dataset_config_template.yaml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/classification/train.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/metrics.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -289,13 +316,6 @@
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bcn_model_config_template.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="13" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -318,9 +338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/BCN/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -341,65 +358,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/vocab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1034">
-          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/data/classification/test.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base_trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BCN/bcn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BCN/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BCN/create_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BCN/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="130" column="29" lean-forward="true" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/data/classification/dev.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/model/simple_model/config.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -408,10 +371,153 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/language_model/adog.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/predict.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/bcn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-82">
+          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bcn_model_config_template.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ELMo/embedder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+        <state relative-caret-position="414">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/language_model/corpus.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="216">
+          <caret line="12" column="86" lean-forward="true" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/GloVe/glove.840B.300d.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="216">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/make_biLM_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <marker date="1554889489454" expanded="true" signature="340:343" ph="..." />
+            <marker date="1554889489454" expanded="true" signature="592:1135" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/biLM_data/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/classification/train.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1554830497595" expanded="true" signature="107:1097" ph="..." />
+            <marker date="1554830497595" expanded="true" signature="450:631" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/embedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1602">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1554824787255" expanded="true" signature="41:3164" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="51" column="38" lean-forward="true" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/base_trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/create_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="80" column="103" selection-start-line="80" selection-start-column="103" selection-end-line="80" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/HW2/common/vocab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/vocab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
         </state>
       </provider>
     </entry>

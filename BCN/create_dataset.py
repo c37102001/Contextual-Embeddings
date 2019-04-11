@@ -73,9 +73,13 @@ def create_vocab(data, cfg, dataset_dir):
 
 
 def create_dataset(data, word_vocab, char_vocab, dataset_dir):
-    for m, d in data.items():
+    for m, d in data.items():  # m(key)=mode, d(value)=data
         print('[*] Creating {} dataset'.format(m))
         dataset = Part1Dataset(d, word_vocab, char_vocab)
+        # d = [OrderedDict([('Id', '10001'), ('text', ['The', 'Rock', 'is', 'destined']), ('label', '4')]),
+        #     [OrderedDict([('Id1', '10002'), ('text', ['The', 'Rock', 'is', 'destined']), ('label', '1')]),
+        #     [OrderedDict([('Id2', '10003'), ('text', ['The', 'Rock', 'is', 'destined']), ('label', '3')])...
+
         dataset_path = (dataset_dir / '{}.pkl'.format(m))
         with dataset_path.open(mode='wb') as f:
             pickle.dump(dataset, f)
