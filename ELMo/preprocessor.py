@@ -32,10 +32,10 @@ class Preprocessor:
             for line in bar:
                 words.update([w.lower() for w in line.split()])
                 count += 1
-                if count >= 3000000:
+                if count >= 2000000:
                     break
             bar.close()
-        tokens = [w for w, _ in words.most_common(50000)]  # TODO
+        tokens = [w for w, _ in words.most_common(50000)]
         return tokens
 
     def get_dataset(self, corpus_dir):
@@ -46,25 +46,12 @@ class Preprocessor:
             bar = tqdm(f, desc='[*] Making dataset from {}'.format(corpus_dir), dynamic_ncols=True)
             count = 0
             for line in bar:
-                processed = dict()
-                processed['context'] = []
-                processed['label'] = []
-                processed['rev_context'] = []
-                processed['rev_label'] = []
-
-                processed['context'] = self.sentence_to_indices('<bos> ' + line.lower())
-                processed['label'] = self.sentence_to_indices(line.lower() + ' <eos>')
-
-                reverse_line = ' '.join(line.split()[::-1])
-                processed['rev_context'] = self.sentence_to_indices('<bos> ' + reverse_line.lower())
-                processed['rev_label'] = self.sentence_to_indices(reverse_line.lower() + ' <eos>')
-
-                data.append(processed)
+                data.append(self.sentence_to_indices('<bos> ' + line.lower() + ' <eos>'))
                 count += 1
-                if count >= 200000:
+                if count >= 100000:
                     break
 
-        training_size = len(data) // 10 * 9
+        training_size = len(data) - 1
         train_dataset = data[:training_size]
         valid_dataset = data[training_size:]
 
