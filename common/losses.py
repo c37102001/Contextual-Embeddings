@@ -45,15 +45,46 @@ class CrossEntropyLoss(Loss):
         self.name = 'CrossEntropy({})'.format(self._target_key)
 
     def _calculate_loss(self, output, batch):
-        _input = output[self._input_key]   # [32, 446, 45899])
-        target = batch[self._target_key].to(device=self._device)    # [32, 446] should be (32, 45899)
+        _input = output[self._input_key]                            # [32, 446, 45899]
+        target = batch[self._target_key].to(device=self._device)    # [32, 446]
 
-        ipdb.set_trace()
-
-        loss = F.cross_entropy(
-            _input, target, weight=self._weight, ignore_index=self._ignore_index,
-            reduction=self._reduction)
+        loss = F.cross_entropy(_input, target, weight=self._weight, ignore_index=self._ignore_index,
+                               reduction=self._reduction)
         n = (target != self._ignore_index).sum().item()
         loss_sum = loss.item() * (n if self._reduction == 'mean' else 1)
 
+        # n=3217, loss=tensor(10.6497, grad_fn=<NllLossBackward>), loss_sum=34528
+        return loss, loss_sum, n
+
+
+class ELMoCrossEntropyLoss(Loss):
+    def __init__(self, device, input_key, target_key, weight=None, ignore_index=-100,
+                 reduction='mean'):
+        if reduction == 'none':
+            raise ValueError('CrossEntropy: reduction can\'t be none')
+
+        self._device = device
+        self._input_key = input_key
+        self._target_key = target_key
+        self._weight = weight
+        self._ignore_index = ignore_index
+        self._reduction = reduction
+        super().__init__()
+
+    def _set_name(self):
+        self.name = 'CrossEntropy({})'.format(self._target_key)
+
+    def _calculate_loss(self, output, batch):
+        _input = output[self._input_key]                            # [32, 446, 45899]
+        target = batch[self._target_key].to(device=self._device)    # [32, 446]
+
+        _input = _input.view(_input.size(0) * _input.size(1), -1)
+        target = target.view(-1)
+
+        loss = F.cross_entropy(_input, target, weight=self._weight, ignore_index=self._ignore_index,
+                               reduction=self._reduction)
+        n = (target != self._ignore_index).sum().item()
+        loss_sum = loss.item() * (n if self._reduction == 'mean' else 1)
+
+        # n=3217, loss=tensor(10.6497, grad_fn=<NllLossBackward>), loss_sum=34528
         return loss, loss_sum, n

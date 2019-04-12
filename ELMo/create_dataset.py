@@ -11,7 +11,7 @@ from preprocessor import Preprocessor
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('dest_dir', type=str, help='corpus directory')
+    parser.add_argument('dest_dir', type=str, help='corpus directory')     # ./ELMo/elmo_data/
     args = parser.parse_args()
     return args
 

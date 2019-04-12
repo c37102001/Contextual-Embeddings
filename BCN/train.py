@@ -15,7 +15,7 @@ from common.base_trainer import BaseTrainer
 from common.losses import CrossEntropyLoss
 from common.metrics import Accuracy
 from common.utils import load_pkl
-from ELMo.embedder import Embedder
+from Elmo.embedder import Embedder
 
 
 def parse_args():

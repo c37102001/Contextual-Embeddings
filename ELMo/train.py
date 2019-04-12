@@ -11,8 +11,8 @@ from torch.utils.data import Dataset, DataLoader
 
 from common.base_model import BaseModel
 from common.base_trainer import BaseTrainer
-from common.losses import CrossEntropyLoss
-from common.metrics import Accuracy
+from common.losses import ELMoCrossEntropyLoss
+from common.metrics import ELMoAccuracy
 from common.utils import load_pkl
 from ELMo.elmo import ELMo
 
@@ -45,11 +45,12 @@ class Trainer(BaseTrainer):
 
     def _run_batch(self, batch):        # batch:[32, 382]
         context_sent = self.embedding(batch['context'].to(self._device))  # [32, 382, 300]
-        ipdb.set_trace()
         logits = self._model(context_sent).type(torch.FloatTensor)       # [32, 382, 45899]
+        labels = logits.max(dim=2)[1]
 
         return {
-            'predict': logits
+            'predict': logits,
+            'labels': labels
         }
 
 
@@ -76,6 +77,7 @@ def main(model_dir):
     train_dataset = load_pkl(dataset_dir / 'train.pkl')
     valid_dataset = load_pkl(dataset_dir / 'valid.pkl')
     embedding = load_pkl(dataset_dir / 'embedding.pkl')
+    pad_idx = embedding.to_index('<pad>')
     embedding = embedding.vectors
 
     cfg.data_loader.batch_size //= cfg.train.n_gradient_accumulation_steps
@@ -90,8 +92,8 @@ def main(model_dir):
 
     trainer = Trainer(
         embedding, device,  cfg.train, train_data_loader, valid_data_loader, model,
-        [CrossEntropyLoss(device, 'predict', 'labels')], [Accuracy(device, 'label')],
-        log_path, ckpt_dir)
+        [ELMoCrossEntropyLoss(device, 'predict', 'labels', ignore_index=pad_idx)],
+        [ELMoAccuracy(device, 'labels')], log_path, ckpt_dir)
     trainer.start()
 
 
