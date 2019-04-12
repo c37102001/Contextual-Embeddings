@@ -1,12 +1,13 @@
 random_seed: 19
 device:
-  type: cpu
+  type: cuda
   ordinal: 0
 dataset_dir: './ELMo/elmo_data'
 data_loader:
-  batch_size: 32
+  batch_size: 16
 net:
-  d_model: 128
+  hidden_size: 2048
+  project_size: 512
   dropout: 0.1
 optim:
   algo: 'Adam'

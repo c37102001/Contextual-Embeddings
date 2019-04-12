@@ -11,6 +11,7 @@ class CorpusDataset(Dataset):
         self.data = data
         self.padding = padding
         self.shuffle = shuffle
+        self.max_padding_size = 200
 
     def __len__(self):
         return len(self.data)
@@ -22,14 +23,22 @@ class CorpusDataset(Dataset):
     def collate_fn(self, datas):
 
         batch = dict()
-        padded_len = max([len(data['context']) for data in datas])
+        padded_len = min(self.max_padding_size, max([len(data['context']) for data in datas]))
 
         batch['context'] = torch.tensor(
             [pad_to_len(data['context'], padded_len, self.padding)
              for data in datas]
         )
-        batch['labels'] = torch.tensor(
-            [pad_to_len(data['labels'], padded_len, self.padding)
+        batch['label'] = torch.tensor(
+            [pad_to_len(data['label'], padded_len, self.padding)
+             for data in datas]
+        )
+        batch['rev_context'] = torch.tensor(
+            [pad_to_len(data['rev_context'], padded_len, self.padding)
+             for data in datas]
+        )
+        batch['rev_label'] = torch.tensor(
+            [pad_to_len(data['rev_label'], padded_len, self.padding)
              for data in datas]
         )
         return batch

@@ -31,8 +31,7 @@ class Model(BaseModel):
         net.to(device=self._device)
 
         optim = getattr(torch.optim, optim_cfg.algo)
-        optim = optim(
-            filter(lambda p: p.requires_grad, net.parameters()), **optim_cfg.kwargs)
+        optim = optim(filter(lambda p: p.requires_grad, net.parameters()), **optim_cfg.kwargs)
 
         return net, optim
 
@@ -42,15 +41,19 @@ class Trainer(BaseTrainer):
         super().__init__(*args, **kwargs)
         self.embedding = torch.nn.Embedding(embedding.size(0), embedding.size(1))
         self.embedding.weight = torch.nn.Parameter(embedding)
+        self.embedding = self.embedding.to(self._device)
 
     def _run_batch(self, batch):        # batch:[32, 382]
-        context_sent = self.embedding(batch['context'].to(self._device))  # [32, 382, 300]
-        logits = self._model(context_sent).type(torch.FloatTensor)       # [32, 382, 45899]
-        labels = logits.max(dim=2)[1]
+
+        context = self.embedding(batch['context'].to(self._device))                 # [32, 382, 300]
+        rev_context = self.embedding(batch['rev_context'].to(self._device))
+
+        logits = self._model(context, rev_context).type(torch.FloatTensor)          # [32, 382*2, 45899]
+        label = logits.max(dim=2)[1]    # [32, 382 * 2]
 
         return {
             'predict': logits,
-            'labels': labels
+            'label': label
         }
 
 
@@ -92,8 +95,8 @@ def main(model_dir):
 
     trainer = Trainer(
         embedding, device,  cfg.train, train_data_loader, valid_data_loader, model,
-        [ELMoCrossEntropyLoss(device, 'predict', 'labels', ignore_index=pad_idx)],
-        [ELMoAccuracy(device, 'labels')], log_path, ckpt_dir)
+        [ELMoCrossEntropyLoss(device, 'predict', 'label', ignore_index=pad_idx)],
+        [ELMoAccuracy(device, 'label')], log_path, ckpt_dir)
     trainer.start()
 
 

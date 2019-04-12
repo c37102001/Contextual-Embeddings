@@ -76,10 +76,13 @@ class ELMoCrossEntropyLoss(Loss):
 
     def _calculate_loss(self, output, batch):
         _input = output[self._input_key]                            # [32, 446, 45899]
-        target = batch[self._target_key].to(device=self._device)    # [32, 446]
+        target = batch[self._target_key]                            # [32, 446 * 2]
+        rev_target_key = 'rev_' + self._target_key
+        rev_target = batch[rev_target_key]                          # [32, 446]
+        target = torch.cat((target, rev_target), 1)                 # [32, 446 * 2]
 
-        _input = _input.view(_input.size(0) * _input.size(1), -1)
-        target = target.view(-1)
+        _input = _input.view(_input.size(0) * _input.size(1), -1).to(device=self._device)
+        target = target.view(-1).to(device=self._device)
 
         loss = F.cross_entropy(_input, target, weight=self._weight, ignore_index=self._ignore_index,
                                reduction=self._reduction)
