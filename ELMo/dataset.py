@@ -7,11 +7,11 @@ class CorpusDataset(Dataset):
     Args:
         data (list): List of samples(dict) with `context` and `labels` as index.
     """
-    def __init__(self, data, padding=0, shuffle=True):
+    def __init__(self, data, padding=0, shuffle=False, max_pad_len=64):
         self.data = data
         self.padding = padding
         self.shuffle = shuffle
-        self.max_padding_size = 150
+        self.max_pad_len = max_pad_len
 
     def __len__(self):
         return len(self.data)
@@ -23,7 +23,7 @@ class CorpusDataset(Dataset):
     def collate_fn(self, datas):
 
         batch = dict()
-        padded_len = min(self.max_padding_size, max([len(data) for data in datas]))
+        padded_len = min(self.max_pad_len, max([len(data) for data in datas]))
 
         batch['context'] = torch.tensor(
             [pad_to_len(data[:-1], padded_len, self.padding)
@@ -34,11 +34,11 @@ class CorpusDataset(Dataset):
              for data in datas]
         )
         batch['rev_context'] = torch.tensor(
-            [pad_to_len([data[0]] + data[-2:0:-1], padded_len, self.padding)
+            [pad_to_len(data[:0:-1], padded_len, self.padding)
              for data in datas]
         )
         batch['rev_label'] = torch.tensor(
-            [pad_to_len(data[-2:0:-1] + [data[-1]], padded_len, self.padding)
+            [pad_to_len(data[-2::-1], padded_len, self.padding)
              for data in datas]
         )
         return batch

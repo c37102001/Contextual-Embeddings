@@ -38,21 +38,28 @@ class ELMo(nn.Module):
         )
         self.backward_project2 = nn.Linear(hidden_size, project_size)
 
-        self.out = nn.Linear(project_size, voc_size)
+        self.out = nn.AdaptiveLogSoftmaxWithLoss(project_size, voc_size, [100, 1000, 10000])
 
-    def forward(self, x, re_x):                     # x: [32, 382, 300]
-        x, _ = self.forward_rnn1(x, None)           # x: [32, 382, 4096])
-        x = self.forward_project1(x)                        # x: [32, 382, 512]
-        x, _ = self.forward_rnn2(x, None)           # x: [32, 382, 4096]
-        x = self.forward_project2(x)                        # x: [32, 382, 512]
-        x = self.out(x)                             # x: [32, 382, 45899]
+        # self.out = nn.Linear(project_size, voc_size)
+
+    def forward(self, x, re_x, x_label, re_x_label):        # x: [32, 64, 300]
+        x, _ = self.forward_rnn1(x, None)                   # x: [32, 64, 4096]
+        x = self.forward_project1(x)                        # x: [32, 64, 512]
+        x, _ = self.forward_rnn2(x, None)                   # x: [32, 64, 4096]
+        x = self.forward_project2(x)                        # x: [32, 64, 512]
+        x = x.view(x.size(0) * x.size(1), -1)               # x: [32*64 , 512]
+        x_loss = self.out(x, x_label.view(-1)).loss         # x_label: [32*64]
+        x_predict = self.out.predict(x)     # tensor([ 8,  6,  6, 16, 14, 16, 16,  9,  4,  7,  5,  7,  8, 14,  3])
 
         re_x, _ = self.backward_rnn1(re_x, None)
         re_x = self.backward_project1(re_x)
         re_x, _ = self.backward_rnn2(re_x, None)
         re_x = self.backward_project2(re_x)
-        re_x = self.out(re_x)                       # re_x: [32, 382, 45899]
+        re_x = re_x.view(re_x.size(0) * re_x.size(1), -1)
+        re_x_loss = self.out(re_x, re_x_label.view(-1)).loss
+        re_x_predict = self.out.predict(re_x)
 
-        output = torch.cat((x, re_x), 1)            # [32, 382 * 2, 45899]
+        loss = (x_loss + re_x_loss) / 2.0
+        predict = x_predict + re_x_predict
 
-        return output
+        return loss, predict

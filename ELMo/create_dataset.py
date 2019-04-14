@@ -11,7 +11,8 @@ from preprocessor import Preprocessor
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('dest_dir', type=str, help='corpus directory')     # ./ELMo/elmo_data/
+    parser.add_argument('--dest_dir', type=str, default='./ELMo/elmo_data/', help='corpus directory')
+    parser.add_argument('--max_pad_len', type=int, default=64, help='data max padding length')
     args = parser.parse_args()
     return args
 
@@ -38,7 +39,7 @@ def main(args):
 
     # process corpus into dataset
     logging.info('Processing dataset.')
-    train_dataset, valid_dataset = preprocessor.get_dataset(config['corpus_path'])
+    train_dataset, valid_dataset = preprocessor.get_dataset(config['corpus_path'], **config['dataset_config'])
     logging.info('Saving dataset.')
     with open(train_pkl_path, 'wb') as f:
         pickle.dump(train_dataset, f)

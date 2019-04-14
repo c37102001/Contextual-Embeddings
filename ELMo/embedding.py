@@ -3,25 +3,12 @@ import torch
 
 
 class Embedding:
-    """
-    Args:
-        embedding_path (str): Path where embedding are loaded from (text file).
-        words (None or list): If not None, only load embedding of the words in
-            the list.
-        oov_as_unk (bool): If argument `words` are provided, whether or not
-            treat words in `words` but not in embedding file as `<unk>`. If
-            true, OOV will be mapped to the index of `<unk>`. Otherwise,
-            embedding of those OOV will be randomly initialize and their
-            indices will be after non-OOV.
-        lower (bool): Whether or not lower the words.
-        rand_seed (int): Random seed for embedding initialization.
-    """
 
-    def __init__(self, embedding_path, words=None, oov_as_unk=True, lower=True, rand_seed=524):
+    def __init__(self, embedding_path, words=None, lower=False, rand_seed=524):
         self.word_dict = {}
         self.vectors = None
         self.lower = lower
-        self.extend(embedding_path, words, oov_as_unk)
+        self.load_embedding(embedding_path, words)
         torch.manual_seed(rand_seed)
 
         if '<bos>' not in self.word_dict:
@@ -34,16 +21,8 @@ class Embedding:
             self.add('<unk>')
 
     def to_index(self, word):
-        """
-        word (str)
-
-        Return:
-             index of the word. If the word is not in `words` and not in the
-             embedding file, then index of `<unk>` will be returned.
-        """
         if self.lower:
             word = word.lower()
-
         if word not in self.word_dict:
             return self.word_dict['<unk>']
         else:
@@ -67,25 +46,7 @@ class Embedding:
         self.vectors = torch.cat([self.vectors, vector], 0)
         self.word_dict[word] = len(self.word_dict)
 
-    def extend(self, embedding_path, words, oov_as_unk=True):
-        self._load_embedding(embedding_path, words)
-        # self._load_embedding(oov_embedding_path, words)
-
-        if words is not None and not oov_as_unk:
-            # initialize word vector for OOV
-            for word in words:
-                if self.lower:
-                    word = word.lower()
-
-                if word not in self.word_dict:
-                    self.word_dict[word] = len(self.word_dict)
-
-            oov_vectors = torch.nn.init.uniform_(
-                torch.empty(len(self.word_dict) - self.vectors.shape[0], self.vectors.shape[1]))
-
-            self.vectors = torch.cat([self.vectors, oov_vectors], 0)
-
-    def _load_embedding(self, embedding_path, words):
+    def load_embedding(self, embedding_path, words):
         if words is not None:
             words = set(words)
 

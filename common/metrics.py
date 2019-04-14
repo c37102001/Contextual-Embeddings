@@ -60,13 +60,10 @@ class ELMoAccuracy(Metric):
         self._n = 0
 
     def update(self, output, batch):
-        prediction = output[self._key].detach()             # [32, 590 * 2]
-        target = batch[self._key]                           # [32, 590]
-        rev_target_key = 'rev_' + self._key
-        rev_target = batch[rev_target_key]
-        target = torch.cat((target, rev_target), 1)        # [32, 590 * 2]
+        prediction = output[self._key].detach()             # [32 * 64]
+        target = batch[self._key]                           # [32, 64]
 
-        prediction = prediction.view(-1).to(device=self._device)
+        prediction = prediction.to(device=self._device)
         target = target.view(-1).to(device=self._device)
 
         self._sum += (prediction == target).sum().item()    # 0

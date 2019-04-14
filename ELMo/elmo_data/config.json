@@ -1,4 +1,8 @@
 {
   "corpus_path": "./data/language_model/corpus_tokenized.txt",
-  "embedding_vec_path": "./data/GloVe/glove.840B.300d.txt"
+  "embedding_vec_path": "./data/GloVe/glove.840B.300d.txt",
+  "dataset_config":{
+    "max_pad_len": 64,
+    "num_of_sentence": 1000000
+  }
 }

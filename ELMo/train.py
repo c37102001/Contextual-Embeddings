@@ -19,7 +19,7 @@ from ELMo.elmo import ELMo
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('model_dir', type=Path, help='Target model directory')  # ./model/
+    parser.add_argument('--model_dir', type=Path, default='./ELMo/model/', help='Target model directory')
     args = parser.parse_args()
 
     return vars(args)
@@ -43,17 +43,17 @@ class Trainer(BaseTrainer):
         self.embedding.weight = torch.nn.Parameter(embedding)
         self.embedding = self.embedding.to(self._device)
 
-    def _run_batch(self, batch):        # batch:[32, 382]
-
-        context = self.embedding(batch['context'].to(self._device))                 # [32, 382, 300]
+    def _run_batch(self, batch):                                                    # batch:[32, 64]
+        context = self.embedding(batch['context'].to(self._device))                 # [32, 64, 300]
         rev_context = self.embedding(batch['rev_context'].to(self._device))
+        context_label = batch['label'].to(self._device)                             # [32, 64]
+        rev_context_label = batch['rev_label'].to(self._device)
 
-        logits = self._model(context, rev_context).type(torch.FloatTensor)          # [32, 382*2, 45899]
-        label = logits.max(dim=2)[1]    # [32, 382 * 2]
+        loss, predict = self._model(context, rev_context, context_label, rev_context_label)
 
         return {
-            'predict': logits,
-            'label': label
+            'loss': loss,
+            'label': predict
         }
 
 
@@ -85,9 +85,9 @@ def main(model_dir):
 
     cfg.data_loader.batch_size //= cfg.train.n_gradient_accumulation_steps
     train_data_loader = DataLoader(
-        train_dataset, collate_fn=train_dataset.collate_fn, shuffle=True, **cfg.data_loader)
+        train_dataset, collate_fn=train_dataset.collate_fn, shuffle=train_dataset.shuffle, **cfg.data_loader)
     valid_data_loader = DataLoader(
-        valid_dataset, collate_fn=valid_dataset.collate_fn, **cfg.data_loader)
+        valid_dataset, collate_fn=valid_dataset.collate_fn, shuffle=valid_dataset.shuffle, **cfg.data_loader)
 
     voc_size = embedding.size(0)
     emb_size = embedding.size(1)
@@ -95,7 +95,7 @@ def main(model_dir):
 
     trainer = Trainer(
         embedding, device,  cfg.train, train_data_loader, valid_data_loader, model,
-        [ELMoCrossEntropyLoss(device, 'predict', 'label', ignore_index=pad_idx)],
+        [ELMoCrossEntropyLoss(device, 'loss', 'label', ignore_index=pad_idx, voc_size=voc_size)],
         [ELMoAccuracy(device, 'label')], log_path, ckpt_dir)
     trainer.start()
 
