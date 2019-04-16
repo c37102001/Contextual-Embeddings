@@ -3,6 +3,6 @@
   "embedding_vec_path": "./data/GloVe/glove.840B.300d.txt",
   "dataset_config":{
     "max_pad_len": 64,
-    "num_of_sentence": 5000
+    "num_of_sentence": 1000000
   }
 }

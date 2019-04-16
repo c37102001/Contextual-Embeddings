@@ -5,8 +5,15 @@ import ipdb
 
 
 class ELMo(nn.Module):
-    def __init__(self, voc_size, emb_size, hidden_size, project_size, dropout):
+    def __init__(self, device, embedding, hidden_size, project_size, dropout):
         super(ELMo, self).__init__()
+        self.device = device
+        voc_size = embedding.size(0)
+        emb_size = embedding.size(1)
+
+        self.embedding = torch.nn.Embedding(voc_size, emb_size)
+        self.embedding.weight = torch.nn.Parameter(embedding)
+        self.embedding = self.embedding.to(self.device)
 
         self.emb_linear = nn.Linear(emb_size, project_size)
 
@@ -44,7 +51,12 @@ class ELMo(nn.Module):
 
         # self.out = nn.Linear(project_size, voc_size)
 
-    def forward(self, x, re_x, x_label, re_x_label):        # x: [32, 64, 300]
+    def forward(self, batch):
+        x = self.embedding(batch['context'].to(self.device))  # [32, 64, 300]
+        re_x = self.embedding(batch['rev_context'].to(self.device))
+        x_label = batch['label'].to(self.device)            # [32, 64]
+        re_x_label = batch['rev_label'].to(self.device)
+
         x = self.emb_linear(x)                              # x: [32, 64, 512]
         x, _ = self.forward_rnn1(x, None)                   # x: [32, 64, 4096]
         x = self.dropout(x)
@@ -72,7 +84,9 @@ class ELMo(nn.Module):
 
         return loss, predict
 
-    def get_elmo_embedding(self, x, re_x):
+    def get_elmo_embedding(self, sentences, rev_sentences):
+        x = self.embedding(sentences)  # [32, 64, 300]
+        re_x = self.embedding(rev_sentences)
 
         x = self.emb_linear(x)
         re_x = self.emb_linear(re_x)
@@ -90,4 +104,6 @@ class ELMo(nn.Module):
         re_x = self.backward_project2(re_x)
         o2 = torch.cat((x, re_x), 2)
 
-        return e, o1, o2
+        elmo_embedding = torch.cat((e.unsqueeze(2), o1.unsqueeze(2), o2.unsqueeze(2)), 2)
+
+        return elmo_embedding
