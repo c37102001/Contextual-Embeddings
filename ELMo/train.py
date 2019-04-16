@@ -39,13 +39,22 @@ class Model(BaseModel):
 class Trainer(BaseTrainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.step_count = 0
 
     def _run_batch(self, batch):
         loss, predict = self._model(batch)
+        self.step_count += 1
+        if self.step_count % 10000 == 0:
+            self._stat.log()
+            self._save_step_ckpt()
+
         return {
             'loss': loss,
             'label': predict
         }
+
+    def _save_step_ckpt(self):
+        self._model.save_state(self.step_count, self._stat.stat, self._ckpt_dir)
 
 
 def main(model_dir):

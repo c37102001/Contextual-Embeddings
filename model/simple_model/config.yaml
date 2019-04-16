@@ -22,7 +22,7 @@ elmo_embedder:
     hidden_size: 2048
     project_size: 512
     dropout: 0.1
-  ckpt_path: './ELMo/model/ckpts/epoch-2.ckpt'
+  ckpt_path: './ELMo/model/ckpts/epoch-.ckpt'
 optim:
   algo: 'Adam'
   kwargs:
