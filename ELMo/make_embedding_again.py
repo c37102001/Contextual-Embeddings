@@ -1,14 +1,17 @@
-import re
+from collections import Counter
+from tqdm import tqdm
 import torch
+import re
 
 
 class Embedding:
-    def __init__(self, embedding_path, words=None, lower=False, rand_seed=524):
+    def __init__(self):
+        self.words = self.collect_words()
         self.word_dict = {}
         self.vectors = None
-        self.lower = lower
-        self.load_embedding(embedding_path, words)
-        torch.manual_seed(rand_seed)
+        self.lower = False
+        self.load_embedding('./data/GloVe/glove.840B.300d.txt', self.words)
+        torch.manual_seed(524)
 
         if '<bos>' not in self.word_dict:
             self.add('<bos>')
@@ -76,3 +79,20 @@ class Embedding:
             self.vectors = torch.cat([self.vectors, vectors], dim=0)
         else:
             self.vectors = vectors
+
+    def collect_words(self, corpus_dir='./data/language_model/corpus_tokenized.txt'):
+        words = Counter()
+        with open(corpus_dir) as f:
+            bar = tqdm(f, desc='[*] Collecting words from {}'.format(corpus_dir), dynamic_ncols=True)
+            count = 0
+            for line in bar:
+                line = '<bos> ' + line + ' <eos>'
+                words.update([w for w in line.split()])
+                count += 1
+                if count >= 1000000:
+                    break
+            bar.close()
+        token = [word for word, time in words.most_common() if time >= 3]
+        print(len(token))
+        return token
+

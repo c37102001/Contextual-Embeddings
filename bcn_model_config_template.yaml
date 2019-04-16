@@ -12,10 +12,18 @@ net:
   char_conv_kernel_size: 3
   d_model: 128
   dropout: 0.1
-use_elmo: false
+use_elmo: true
 elmo_embedder:
   # Set the value of ``ELMo.embedder`` init parameters here.
-  ctx_emb_dim: 0  # The dimension of the contextualized embedding, required.
+  n_ctx_embs: 3  # The number of the contextualized embedding, required.
+  ctx_emb_dim: 300  # The dimension of the contextualized embedding, required.
+  embedding_path: './ELMo/elmo_data/embedding.pkl'
+  model_cfg:
+    hidden_size: 2038
+    project_size: 512
+    dropout: 0.1
+  ckpt_path: './ELMo/model/ckpts/epoch-3.ckpt'
+
 optim:
   algo: 'Adam'
   kwargs:

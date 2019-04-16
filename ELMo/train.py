@@ -15,6 +15,9 @@ from common.losses import ELMoCrossEntropyLoss
 from common.metrics import ELMoAccuracy
 from common.utils import load_pkl
 from ELMo.elmo import ELMo
+import tqdm
+from datetime import datetime
+import pickle
 
 
 def parse_args():
@@ -56,6 +59,12 @@ class Trainer(BaseTrainer):
             'label': predict
         }
 
+    def _save_ckpt(self):
+        self._model.save_state(self._epoch, self._stat.stat, self._ckpt_dir)
+        embedding_path = self._ckpt_dir / 'embedding-{}.pkl'.format(self._epoch)
+        with open(embedding_path, 'wb') as f:
+            pickle.dump(self.embedding, f)
+
 
 def main(model_dir):
     cfg = Box.from_yaml(filename=model_dir / 'config.yaml')
@@ -80,6 +89,7 @@ def main(model_dir):
     train_dataset = load_pkl(dataset_dir / 'train.pkl')
     valid_dataset = load_pkl(dataset_dir / 'valid.pkl')
     embedding = load_pkl(dataset_dir / 'embedding.pkl')
+
     pad_idx = embedding.to_index('<pad>')
     embedding = embedding.vectors
 

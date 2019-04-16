@@ -15,7 +15,7 @@ from common.base_trainer import BaseTrainer
 from common.losses import CrossEntropyLoss
 from common.metrics import Accuracy
 from common.utils import load_pkl
-from Elmo.embedder import Embedder
+from ELMo.embedder import Embedder
 
 
 def parse_args():
@@ -46,34 +46,16 @@ class Trainer(BaseTrainer):
 
     def _run_batch(self, batch):
         text_word = batch['text_word'].to(device=self._device)      # (32_batch_size, 40_text_words)
-        # [64, 17, 41, 21, 11999, 4, 2582, 305, 41, 3,
-        #  521, 7, 5, 2019, 6, 72, 103, 277, 2, 0, 0, 0, ...]
-
-        text_char = batch['text_char'].to(device=self._device)      # (32, 40, 16_letters)
-        # [[42, 33, 16, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        #  [34, 20, 31, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        #  [12, 23, 23,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],...]
-
+        text_char = batch['text_char'].to(device=self._device)      # (32, 40, 16_chars)
         if self._elmo_embedder and self._elmo_embedder.ctx_emb_dim > 0:
             text_ctx_emb = self._elmo_embedder(batch['text_orig'], self._max_sent_len)
-            # batch['text_orig'] (32)  -> 32 of list[str] like below:
-            # ['Even', 'with', 'all', 'its', 'botches', ',', 'Enigma', 'offers', 'all', 'the', 'pleasure', 'of', 'a',
-            #  'handsome', 'and', 'well', 'made', 'entertainment', '.']
-
             text_ctx_emb = torch.tensor(text_ctx_emb, device=self._device)
         else:
             text_ctx_emb = torch.empty(
                 (*text_word.shape, 0), dtype=torch.float32, device=self._device)
         text_pad_mask = batch['text_pad_mask'].to(device=self._device)
-        # (32, 40)  [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, ...]
-
         logits = self._model(text_word, text_char, text_ctx_emb, text_pad_mask)  # (32, 5)
-        # [[0.5220, -0.0385, 0.4532, -0.0144, 0.2728],
-        #  [0.1097, 0.4163, 0.0727, 0.3884, 0.0000],
-        #  [0.1974, 0.5246, 0.3892, 0.1049, 0.6959], ...]
-
         label = logits.max(dim=1)[1]    # (32)
-        # [0, 1, 4, 4, 2, 0, 4, 2, 4, 4, 4, 0, 2, 1, 3, 4, 4, 0, 2, 4, 3, 2, 4, 2, 0, 4, 0, 0, 0, 3, 4, 2]
 
         return {
             'logits': logits,
@@ -133,6 +115,7 @@ def main(model_dir):
         elmo_embedder = None
 
     print('[*] Creating model\n')
+    cfg.net.n_ctx_embs = cfg.elmo_embedder.n_ctx_embs if cfg.use_elmo else 0
     cfg.net.ctx_emb_dim = cfg.elmo_embedder.ctx_emb_dim if cfg.use_elmo else 0
     model = Model(device, word_vocab, char_vocab, cfg.net, cfg.optim)
 
