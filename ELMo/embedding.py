@@ -1,23 +1,15 @@
 import re
 import torch
+import numpy as np
 
 
 class Embedding:
-    def __init__(self, embedding_path, words=None, lower=False, rand_seed=524):
+    def __init__(self, embedding_path, words=None, lower=False, oov_as_unk=True, rand_seed=524):
         self.word_dict = {}
         self.vectors = None
         self.lower = lower
-        self.load_embedding(embedding_path, words)
+        self.extend(embedding_path, words, oov_as_unk)
         torch.manual_seed(rand_seed)
-
-        if '<bos>' not in self.word_dict:
-            self.add('<bos>')
-        if '<eos>' not in self.word_dict:
-            self.add('<eos>')
-        if '<pad>' not in self.word_dict:
-            self.add('<pad>')
-        if '<unk>' not in self.word_dict:
-            self.add('<unk>')
 
     def to_index(self, word):
         if self.lower:
@@ -45,11 +37,37 @@ class Embedding:
         self.vectors = torch.cat([self.vectors, vector], 0)
         self.word_dict[word] = len(self.word_dict)
 
-    def load_embedding(self, embedding_path, words):
+    def extend(self, embedding_path, words, oov_as_unk):
+        self._load_embedding(embedding_path, words)
+
+        if words is not None and not oov_as_unk:
+            # initialize word vector for OOV
+            for word in words:
+                if self.lower:
+                    word = word.lower()
+
+                if word not in self.word_dict:
+                    self.word_dict[word] = len(self.word_dict)
+
+            oov_vectors = torch.nn.init.uniform_(
+                torch.empty(len(self.word_dict) - self.vectors.shape[0], self.vectors.shape[1]))
+
+            self.vectors = torch.cat([self.vectors, oov_vectors], 0)
+
+    def _load_embedding(self, embedding_path, words):
         if words is not None:
             words = set(words)
 
         vectors = []
+
+        self.word_dict['<pad>'] = len(self.word_dict)
+        vectors.append(np.zeros(300).tolist())
+        self.word_dict['<bos>'] = len(self.word_dict)
+        vectors.append(np.ones(300).tolist())
+        self.word_dict['<eos>'] = len(self.word_dict)
+        vectors.append(list(np.ones(300) * (-1)))
+        self.word_dict['<unk>'] = len(self.word_dict)
+        vectors.append(np.random.randn(300).tolist())
 
         with open(embedding_path) as fp:
 

@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 
 class BaseModel:
-    def __init__(self, device, *args, **kwargs):
+    def __init__(self, device, *args, **kwargs):        # kwargs = {}
         self._device = device
         self._net, self._optim = self._create_net_and_optim(*args, **kwargs)
 

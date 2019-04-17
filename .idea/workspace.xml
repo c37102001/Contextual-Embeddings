@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6c77ee79-b021-4c80-8e56-46ad87c3cf42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ELMo/elmo_data/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/ELMo/elmo_data/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ELMo/elmo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ELMo/elmo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ELMo/embedder.py" beforeDir="false" afterPath="$PROJECT_DIR$/ELMo/embedder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ELMo/embedding.py" beforeDir="false" afterPath="$PROJECT_DIR$/ELMo/embedding.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ELMo/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/ELMo/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/base_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/simple_model/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/model/simple_model/config.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,37 +35,37 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="14" />
-          <entry key="json" value="30" />
+          <entry key="json" value="31" />
           <entry key="md" value="7" />
-          <entry key="py" value="378" />
-          <entry key="txt" value="17" />
-          <entry key="yaml" value="85" />
+          <entry key="py" value="408" />
+          <entry key="txt" value="24" />
+          <entry key="yaml" value="87" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="30" />
+          <entry key="JSON" value="31" />
           <entry key="Markdown" value="7" />
-          <entry key="PLAIN_TEXT" value="31" />
-          <entry key="Python" value="378" />
-          <entry key="YAML" value="85" />
+          <entry key="PLAIN_TEXT" value="38" />
+          <entry key="Python" value="408" />
+          <entry key="YAML" value="87" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="37" />
           <entry key="json" value="288" />
-          <entry key="py" value="14472" />
+          <entry key="py" value="15100" />
           <entry key="txt" value="28" />
-          <entry key="yaml" value="484" />
+          <entry key="yaml" value="500" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="288" />
           <entry key="PLAIN_TEXT" value="65" />
-          <entry key="Python" value="14472" />
-          <entry key="YAML" value="484" />
+          <entry key="Python" value="15100" />
+          <entry key="YAML" value="500" />
         </counts>
       </usages-collector>
     </session>
@@ -71,10 +73,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ELMo/embedder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+                <marker date="1555498852708" expanded="true" signature="862:872" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ELMo/elmo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+            <state relative-caret-position="44">
+              <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -83,10 +98,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ELMo/model/config.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        <entry file="file://$PROJECT_DIR$/data/GloVe/glove.840B.300d.txt">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="216">
+              <caret line="27" selection-start-line="27" selection-end-line="27" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -94,8 +109,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/simple_model/config.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+            <state relative-caret-position="252">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ELMo/embedding.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BCN/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="88" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,10 +161,10 @@
       <find>s</find>
       <find>tqdm</find>
       <find>embed</find>
-      <find>step</find>
       <find>loss</find>
       <find>ip</find>
       <find>ipdb</find>
+      <find>step</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,18 +201,18 @@
         <option value="$PROJECT_DIR$/common/metrics.py" />
         <option value="$PROJECT_DIR$/common/losses.py" />
         <option value="$PROJECT_DIR$/common/base_trainer.py" />
-        <option value="$PROJECT_DIR$/common/base_model.py" />
         <option value="$PROJECT_DIR$/ELMo/dataset.py" />
-        <option value="$PROJECT_DIR$/ELMo/preprocessor.py" />
-        <option value="$PROJECT_DIR$/ELMo/embedding.py" />
         <option value="$PROJECT_DIR$/ELMo/create_dataset.py" />
         <option value="$PROJECT_DIR$/ELMo/elmo_data/config.json" />
         <option value="$PROJECT_DIR$/ELMo/model/config.yaml" />
-        <option value="$PROJECT_DIR$/ELMo/elmo.py" />
-        <option value="$PROJECT_DIR$/ELMo/embedder.py" />
-        <option value="$PROJECT_DIR$/BCN/train.py" />
-        <option value="$PROJECT_DIR$/model/simple_model/config.yaml" />
+        <option value="$PROJECT_DIR$/ELMo/preprocessor.py" />
+        <option value="$PROJECT_DIR$/common/base_model.py" />
         <option value="$PROJECT_DIR$/ELMo/train.py" />
+        <option value="$PROJECT_DIR$/ELMo/embedding.py" />
+        <option value="$PROJECT_DIR$/ELMo/elmo.py" />
+        <option value="$PROJECT_DIR$/BCN/train.py" />
+        <option value="$PROJECT_DIR$/ELMo/embedder.py" />
+        <option value="$PROJECT_DIR$/model/simple_model/config.yaml" />
       </list>
     </option>
   </component>
@@ -231,7 +270,24 @@
             <path>
               <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
               <item name="HW2" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW2" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="GloVe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW2" type="462c0819:PsiDirectoryNode" />
               <item name="ELMo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HW2" type="462c0819:PsiDirectoryNode" />
+              <item name="ELMo" type="462c0819:PsiDirectoryNode" />
+              <item name="elmo_data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HW2" type="b2602c69:ProjectViewProjectNode" />
@@ -377,13 +433,6 @@
     <entry file="file://$PROJECT_DIR$/data/classification/dev.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/GloVe/glove.840B.300d.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="216">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/classification/train.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -521,16 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BCN/create_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BCN/bcn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -541,83 +580,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/vocab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/metrics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/losses.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#1756#1791#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ELMo/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/preprocessor.py">
+    <entry file="file://$PROJECT_DIR$/ELMo/model/config.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="50" />
+        <state relative-caret-position="108">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/create_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/embedding.py">
+    <entry file="file://$PROJECT_DIR$/common/vocab.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/create_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1555399139471" expanded="true" signature="462:465" ph="..." />
-            <marker date="1555399139471" expanded="true" signature="463:465" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="342">
+          <caret line="71" column="71" lean-forward="true" selection-start-line="70" selection-start-column="23" selection-end-line="71" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -628,57 +614,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BCN/train.py">
+    <entry file="file://$PROJECT_DIR$/ELMo/create_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="854">
-          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+        <state relative-caret-position="242">
+          <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1555399139471" expanded="true" signature="462:465" ph="..." />
+            <marker date="1555399139471" expanded="true" signature="463:465" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base_trainer.py">
+    <entry file="file://$PROJECT_DIR$/ELMo/dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+        <state relative-caret-position="450">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="56" column="25" lean-forward="true" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/metrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/base_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="270">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/embedder.py">
+    <entry file="file://$PROJECT_DIR$/common/base_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        <state relative-caret-position="314">
+          <caret line="127" column="23" lean-forward="true" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ELMo/model/config.yaml">
+    <entry file="file://$PROJECT_DIR$/common/losses.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        <state relative-caret-position="314">
+          <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#1756#1791#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ELMo/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+        <state relative-caret-position="674">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/embedding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/GloVe/glove.840B.300d.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="216">
+          <caret line="27" selection-start-line="27" selection-end-line="27" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BCN/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="88" selection-end-column="20" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -687,18 +736,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ELMo/elmo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+        <state relative-caret-position="44">
+          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ELMo/embedder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <marker date="1555498852708" expanded="true" signature="862:872" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/simple_model/config.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        <state relative-caret-position="252">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
         </state>
       </provider>
     </entry>
