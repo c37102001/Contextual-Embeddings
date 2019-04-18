@@ -12,7 +12,7 @@ net:
   char_conv_kernel_size: 3
   d_model: 128
   dropout: 0.1
-use_elmo: false
+use_elmo: true
 elmo_embedder:
   # Set the value of ``ELMo.embedder`` init parameters here.
   n_ctx_embs: 3  # The number of the contextualized embedding, required.
@@ -22,7 +22,7 @@ elmo_embedder:
     hidden_size: 2048
     project_size: 512
     dropout: 0.1
-  ckpt_path: './ELMo/model/ckpts/epoch-110000.ckpt'
+  ckpt_path: './ELMo/model/ckpts/epoch-180000.ckpt'
 optim:
   algo: 'Adam'
   kwargs:

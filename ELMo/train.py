@@ -12,7 +12,6 @@ from torch.utils.data import Dataset, DataLoader
 from common.base_model import BaseModel
 from common.base_trainer import BaseTrainer
 from common.losses import ELMoCrossEntropyLoss
-from common.metrics import ELMoAccuracy
 from common.utils import load_pkl
 from ELMo.elmo import ELMo
 
@@ -44,7 +43,7 @@ class Trainer(BaseTrainer):
     def _run_batch(self, batch):
         loss = self._model(batch)
         self.step_count += 1
-        if self.step_count % 10000 == 0:
+        if self.step_count % 20000 == 0:
             self._stat.log()
             self._save_step_ckpt()
 
@@ -69,10 +68,10 @@ def main(model_dir):
 
     log_path = model_dir / 'log.csv'
     ckpt_dir = model_dir / 'ckpts'
-    # if any([p.exists() for p in [log_path, ckpt_dir]]):
-    #     print('[!] Directory already contains saved ckpts/log')
-    #     exit(1)
-    # ckpt_dir.mkdir()
+    if any([p.exists() for p in [log_path, ckpt_dir]]):
+        print('[!] Directory already contains saved ckpts/log')
+        exit(1)
+    ckpt_dir.mkdir()
 
     print('[*] Loading datasets from {}'.format(cfg.dataset_dir))
     dataset_dir = Path(cfg.dataset_dir)

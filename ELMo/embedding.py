@@ -4,12 +4,21 @@ import numpy as np
 
 
 class Embedding:
-    def __init__(self, embedding_path, words=None, lower=False, oov_as_unk=True, rand_seed=524):
+    def __init__(self, embedding_path, words=None, lower=False, oov_as_unk=False, rand_seed=524):
         self.word_dict = {}
         self.vectors = None
         self.lower = lower
         self.extend(embedding_path, words, oov_as_unk)
         torch.manual_seed(rand_seed)
+        # if '<bos>' not in self.word_dict:
+        #     self.add('<bos>')
+        # if '<eos>' not in self.word_dict:
+        #     self.add('<eos>')
+        # if '<pad>' not in self.word_dict:
+        #     self.add('<pad>')
+        # if '<unk>' not in self.word_dict:
+        #     self.add('<unk>')
+        # print(self.get_vocabulary_size())
 
     def to_index(self, word):
         if self.lower:

@@ -23,19 +23,6 @@ class Embedder:
 
     def __call__(self, sentences, max_sent_len):
 
-        # pad_len = min(max(map(len, sentences)), max_sent_len)
-        # sentences = [['<bos>'] + sentence + ['<eos>'] for sentence in sentences]
-        # sentences = [pad_to_len([self.embedding.to_index(word) for word in sentence],
-        #                         pad_len, self.embedding.to_index('<pad>'))
-        #              for sentence in sentences]
-        # rev_sentences = [sentence[::-1] for sentence in sentences]
-        # sentences = torch.tensor(sentences).to(self.device)
-        # rev_sentences = torch.tensor(rev_sentences).to(self.device)
-        #
-        # elmo_embedding = self.model.get_elmo_embedding(sentences, rev_sentences)  # [32, 64, 512*2]
-        #
-        # return elmo_embedding.to('cpu').detach().numpy()
-
         pad_len = min(max(map(len, sentences)), max_sent_len) + 1
         sentences = [['<bos>'] + sentence + ['<eos>'] for sentence in sentences]
 
