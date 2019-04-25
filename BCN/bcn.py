@@ -71,7 +71,6 @@ class Embedding(nn.Module):
         char_emb = F.max_pool1d(char_emb, word_len, stride=1)
         char_emb = char_emb.squeeze().reshape(batch_size, seq_len, emb_dim)     # [32, 41, 32]
 
-        # TODO
         if self.n_ctx_embs > 0:
             ctx_emb = (ctx_emb * self.ctx_emb_weight).sum(dim=2)
             emb = torch.cat((word_emb, char_emb, ctx_emb), dim=-1)

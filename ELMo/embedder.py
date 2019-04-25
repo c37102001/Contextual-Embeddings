@@ -3,8 +3,11 @@ import torch
 from ELMo.dataset import pad_to_len
 from ELMo.elmo import ELMo
 import sys
+import os
 # sys.path.append('/nfs1/home/c37102001/Pycharm/PyTorch/adl-hw2/HW2/ELMo')
-sys.path.append('/home/test/c37102001/HW2/ELMo')
+# sys.path.append('/home/test/c37102001/HW2/ELMo')
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+
 
 class Embedder:
 

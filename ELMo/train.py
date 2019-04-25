@@ -43,7 +43,7 @@ class Trainer(BaseTrainer):
     def _run_batch(self, batch):
         loss = self._model(batch)
         self.step_count += 1
-        if self.step_count % 20000 == 0:
+        if self.step_count % 20 == 0:
             self._stat.log()
             self._save_step_ckpt()
 
@@ -68,10 +68,10 @@ def main(model_dir):
 
     log_path = model_dir / 'log.csv'
     ckpt_dir = model_dir / 'ckpts'
-    if any([p.exists() for p in [log_path, ckpt_dir]]):
-        print('[!] Directory already contains saved ckpts/log')
-        exit(1)
-    ckpt_dir.mkdir()
+    # if any([p.exists() for p in [log_path, ckpt_dir]]):
+    #     print('[!] Directory already contains saved ckpts/log')
+    #     exit(1)
+    # ckpt_dir.mkdir()
 
     print('[*] Loading datasets from {}'.format(cfg.dataset_dir))
     dataset_dir = Path(cfg.dataset_dir)
@@ -90,8 +90,11 @@ def main(model_dir):
 
     model = Model(device, embedding, cfg.net, cfg.optim)
 
+    # ckpt_path = ckpt_dir / 'epoch-60000.ckpt'
+    # model.load_state(ckpt_path)
+
     trainer = Trainer(device,  cfg.train, train_data_loader, valid_data_loader, model,
-        [ELMoCrossEntropyLoss(device, 'loss', 'label', ignore_index=pad_idx, voc_size=embedding.size(0))],
+                    [ELMoCrossEntropyLoss(device, 'loss', 'label', ignore_index=pad_idx, voc_size=embedding.size(0))],
         [], log_path, ckpt_dir)
     trainer.start()
 

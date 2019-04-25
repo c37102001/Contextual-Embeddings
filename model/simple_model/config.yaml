@@ -1,4 +1,4 @@
-random_seed: 19
+random_seed: 18
 device:
   type: cuda
   ordinal: 0
@@ -21,8 +21,8 @@ elmo_embedder:
   net_cfg:
     hidden_size: 2048
     project_size: 512
-    dropout: 0.1
-  ckpt_path: './ELMo/model/ckpts/epoch-180000.ckpt'
+    dropout: 0.5
+  ckpt_path: './ELMo/model/ckpts/epoch-3.ckpt'
 optim:
   algo: 'Adam'
   kwargs:

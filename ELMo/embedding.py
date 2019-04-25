@@ -4,7 +4,7 @@ import numpy as np
 
 
 class Embedding:
-    def __init__(self, embedding_path, words=None, lower=False, oov_as_unk=False, rand_seed=524):
+    def __init__(self, embedding_path, words=None, lower=False, oov_as_unk=True, rand_seed=524):
         self.word_dict = {}
         self.vectors = None
         self.lower = lower
@@ -18,7 +18,7 @@ class Embedding:
         #     self.add('<pad>')
         # if '<unk>' not in self.word_dict:
         #     self.add('<unk>')
-        # print(self.get_vocabulary_size())
+        print(self.get_vocabulary_size())
 
     def to_index(self, word):
         if self.lower:
@@ -70,13 +70,10 @@ class Embedding:
         vectors = []
 
         self.word_dict['<pad>'] = len(self.word_dict)
-        vectors.append(np.zeros(300).tolist())
-        self.word_dict['<bos>'] = len(self.word_dict)
-        vectors.append(np.ones(300).tolist())
-        self.word_dict['<eos>'] = len(self.word_dict)
-        vectors.append(list(np.ones(300) * (-1)))
-        self.word_dict['<unk>'] = len(self.word_dict)
-        vectors.append(np.random.randn(300).tolist())
+        self.vectors = torch.zeros((1, 300))
+        self.add('<bos>')
+        self.add('<eos>')
+        self.add('<unk>')
 
         with open(embedding_path) as fp:
 

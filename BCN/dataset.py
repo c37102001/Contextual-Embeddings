@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
-
+import ipdb
 
 class Part1Dataset(Dataset):
     def __init__(self, data, word_vocab, char_vocab):

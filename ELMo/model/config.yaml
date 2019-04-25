@@ -1,20 +1,20 @@
-random_seed: 19
+random_seed: 25
 device:
   type: cuda
   ordinal: 0
 dataset_dir: './ELMo/elmo_data/'
 data_loader:
-  batch_size: 32
+  batch_size: 28
 net:
-  hidden_size: 2048
+  hidden_size: 4096
   project_size: 512
-  dropout: 0.1
+  dropout: 0.3
 optim:
   algo: 'Adam'
   kwargs:
     lr: 1.0e-3
     weight_decay: 1.0e-6
 train:
-  n_epochs: 10
+  n_epochs: 5
   max_grad_norm: 1
   n_gradient_accumulation_steps: 1  # Must be a divider of data_loader.batch_size.

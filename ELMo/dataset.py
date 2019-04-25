@@ -1,11 +1,12 @@
 import torch
 from torch.utils.data import Dataset
+import ipdb
 
 
 class CorpusDataset(Dataset):
     """
     Args:
-        data (list): List of samples(dict) with `context` and `labels` as index.
+        data (list): List of indiced sentence(list).
     """
     def __init__(self, data, padding=0, shuffle=False, max_pad_len=64):
         self.data = data
@@ -41,6 +42,12 @@ class CorpusDataset(Dataset):
             [pad_to_len(data[-2::-1], padded_len, self.padding)
              for data in datas]
         )
+
+        batch['mask'] = torch.FloatTensor(
+            [[1 if not word == self.padding else 0 for word in sentence]
+             for sentence in batch['context']]
+        )
+
         return batch
 
 
