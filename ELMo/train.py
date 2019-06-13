@@ -1,5 +1,5 @@
 import argparse
-import sys
+
 import random
 from pathlib import Path
 

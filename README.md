@@ -23,8 +23,15 @@ unzip data.zip
 ```
 
 ## ELMo
-Your code for training ELMo should be placed under `ELMo/`. After finished training 
-ELMo, you should implement the `Embedder` class in `ELMo/embedder.py`.
+1. Create ELMo dataset
+    ```
+    python3.7 ./ELMo/create_dataset.py 
+    ```
+2. Train ELMo model
+    ```
+    python3.7 ./ELMo/train.py
+    ```
+
 
 ## BCN + ELMo for classification task
 1. Create dataset object from raw data.

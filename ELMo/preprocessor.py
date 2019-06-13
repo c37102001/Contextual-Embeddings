@@ -24,7 +24,7 @@ class Preprocessor:
                 line = '<bos> ' + line + ' <eos>'
                 words.update([w for w in line.split()])
                 count += 1
-                if count >= 1200000:
+                if count >= 1000000:
                     break
             bar.close()
         tokens = [word for word, time in words.most_common() if time >= 3]
